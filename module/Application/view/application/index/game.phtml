@@ -1,0 +1,19 @@
+<?php $this->HeadScript()->appendScript('$(document).ready(function() {
+        var roundData = '.$json.'
+        });', 
+    $type = 'text/javascript') ?>
+ <audio controls>
+  <source src="game.mp3" type="audio/mpeg">
+</audio> 
+
+<div class="game-board">
+    <h1>Round: <?php echo $roundData['roundNumber'];?></h1>
+    
+    <?php foreach($roundData['chairs'] as $chair) {?>
+    		<div id="<?php echo $chair['id']?>" x-attribute="<?php $chair['x']?>" y-attribute="<?php $chair['y']?>"></div>
+    <?php }?>
+</div>
+
+<div class="side-view">
+
+</div>
