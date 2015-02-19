@@ -1,0 +1,30 @@
+{ 
+   "roundNumber" : 1,
+   "delay": 7000,
+   "startTime": 1424384233,
+   "chairs" : [
+   	   { 
+   	     "id" : "sadfacsdofsnauodrfnyasoern",
+   	     "x": 200,
+   	     "y": 100,
+   	     "players": [
+   	        { 
+   	           "id": "playerHash", "name":"john", "time": 153, "status": "win"
+   	        },
+   	        { 
+   	           "id": "playerHash2", "name":"kris", "time": 231, "status": "lose"
+   	        }
+   	     ]
+   	   },
+   	   { 
+   	     "id" : "aw98rs9erysdfsfsfsd",
+   	     "x": 120,
+   	     "y": 63,
+   	     "players": [
+   	        { 
+   	           "id": "playerHash", "name":"jay", "time":83, "status": "win"
+   	        }
+   	     ]
+   	   }
+   ]
+}
