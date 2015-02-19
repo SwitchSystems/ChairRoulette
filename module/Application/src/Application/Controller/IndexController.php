@@ -12,6 +12,12 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return $this->redirect()->toRoute('zf-apigility/welcome');
+    	$mc = $this->getServiceLocator()->get('MemcacheService');
+    	$mc->set('test','sdjoksfdjkfsd');
+    	var_dump($mc->get('test'));
+    	$mc->delete('test');
+    	var_dump($mc->get('test'));
+    	
+     //   return $this->redirect()->toRoute('zf-apigility/welcome');
     }
 }
