@@ -1,11 +1,16 @@
     "use strict";
 $(function() {
 	
+	var board = $('div.game-board');
+	var round = '<h1 class="round">Round: ';
+	
 	startRound();
 	
 	function startRound() {
 		var timeout = 10;
 		var delay = roundData['delay'];
+		
+		board.append(round+roundData['roundNumber']+'</h1>');
 		
 		createChairs();
 		
@@ -13,6 +18,17 @@ $(function() {
 	}
 	
 	function createChairs() {
+		var chairs = roundData['chairs'];
+		var chair;
+		
+		for(chair in chairs) {
+			board.append('<div class="chair" id="'+chair['id']+'">');
+			chairElement = $('div#'+chair['id']);
+			chairElement.style.position = "absolute";
+			chairElement.style.left = chair['x'];
+			chairElement.style.top = chair['y'];
+			chairElement.hide();
+		}
 		
 	}
 	
@@ -44,6 +60,7 @@ $(function() {
 	}
 	
 	function endRound() {
+		$('h1.round').remove();
 		$('div.chair').remove();
 		
 		startRound();
