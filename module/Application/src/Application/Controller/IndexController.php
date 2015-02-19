@@ -15,6 +15,10 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    public function gameAction()
+    {
+        return new ViewModel();
+    }
 
     public function apiAction()
     {

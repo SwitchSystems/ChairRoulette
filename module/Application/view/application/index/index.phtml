@@ -1,12 +1,35 @@
 <script src="/js/app/index.js"></script>
-<h1>Hello World</h1>
+<div class="container">
+	<div class="row">
 
-<div class="row">
+		<div class="col-sm-6">
+			Choose a game room from the right hand side, or create a new game for
+			your friends
 
-    <div class="col-sm-6">
-        Start New Game
-    </div>
-    <div class="col-sm-6">
-        Player List
-    </div>
+			<form id="newGame">
+				<div class="form-group">
+					<label for="name">Your Name</label> <input id="name" type="text"
+						name="name" placeholder="Your name" required="required">
+				</div>
+				<button type="submit" class="btn btn-primary">Start New Game</button>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<div id="roomList">
+
+				<!--  for each room (retrieved by API) -->
+				<div class="room">
+					<form method="get" action="/room/{roomKey}/">
+
+						<input type="submit" class="btn btn-primary btn-mini"
+							value="Join Game" /> &nbsp; Room Name
+					</form>
+					<div class="clear"></div>
+				</div>
+				<!-- endforeach -->
+
+			</div>
+		</div>
+	</div>
+
 </div>

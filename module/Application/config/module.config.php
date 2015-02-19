@@ -16,6 +16,16 @@ return array(
                     ),
                 ),
             ),
+        		'game' => array(
+        				'type' => 'Zend\Mvc\Router\Http\Literal',
+        				'options' => array(
+        						'route'    => '/game/',
+        						'defaults' => array(
+        								'controller' => 'Application\Controller\Index',
+        								'action'     => 'game',
+        						),
+        				),
+        		),        		
             'api' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
