@@ -1,0 +1,26 @@
+{
+    "name": "chair-roulette",
+    "description": "php uk hackathon",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Switch",
+            "email": "developers@switchsystems.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.23",
+        "zendframework/zendframework": ">=2.3.2,<3.0.0",
+        "zfcampus/zf-apigility": "~1.0",
+        "zfcampus/zf-apigility-documentation": "~1.0",
+        "zfcampus/zf-development-mode": "~2.0"
+    },
+    "require-dev": {
+        "zendframework/zftool": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "zfcampus/zf-apigility-admin": "~1.0",
+        "zfcampus/zf-apigility-welcome": "~1.0",
+        "zfcampus/zf-deploy": "~1.0"
+    }
+}
