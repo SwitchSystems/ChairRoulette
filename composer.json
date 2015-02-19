@@ -2,7 +2,7 @@
     "name": "chair-roulette",
     "description": "php uk hackathon",
     "minimum-stability": "stable",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Switch",
@@ -14,7 +14,8 @@
         "zendframework/zendframework": ">=2.3.2,<3.0.0",
         "zfcampus/zf-apigility": "~1.0",
         "zfcampus/zf-apigility-documentation": "~1.0",
-        "zfcampus/zf-development-mode": "~2.0"
+        "zfcampus/zf-development-mode": "~2.0",
+        "sonata-project/cache": "~1.0"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",
