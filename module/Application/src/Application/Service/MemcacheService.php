@@ -17,12 +17,12 @@ class MemcacheService implements ServiceLocatorAwareInterface
 	
 	public function get($key)
 	{
-		return $this->memcache->get([$key]);
+		return $this->memcache->get([$key])->getData();
 	}
 	
 	public function set($key, $data)
 	{
-		return $this->memcache->set([$key],$data);
+		return $this->memcache->set([$key],$data)->getData();
 	}
 	
 	public function delete($key)

@@ -7,7 +7,9 @@
 return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
-        'Application',
+        'ZFTool',
+        'ZF\Apigility\Admin',
+        'ZF\Apigility\Welcome',
         'ZF\DevelopmentMode',
         'ZF\Apigility',
         'ZF\Apigility\Provider',
@@ -23,6 +25,7 @@ return array(
         'ZF\Rest',
         'ZF\Rpc',
         'ZF\Versioning',
+        'Application',
     ),
     // This should be an array of paths in which modules reside.
     // If a string key is provided, the listener will consider that a module
@@ -37,9 +40,6 @@ return array(
         // e.g., IBM i -- have problems with globs that are not qualified.
         'config_glob_paths' => array(realpath(__DIR__) . '/autoload/{,*.}{global,local}.php'),
         'config_cache_key' => 'application.config.cache',
-        'config_cache_enabled' => true,
         'module_map_cache_key' => 'application.module.cache',
-        'module_map_cache_enabled' => true,
-        'cache_dir' => 'data/cache/',
     )
 );

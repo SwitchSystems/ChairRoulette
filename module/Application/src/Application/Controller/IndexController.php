@@ -7,17 +7,17 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	$mc = $this->getServiceLocator()->get('MemcacheService');
-    	$mc->set('test','sdjoksfdjkfsd');
-    	var_dump($mc->get('test'));
-    	$mc->delete('test');
-    	var_dump($mc->get('test'));
-    	
-     //   return $this->redirect()->toRoute('zf-apigility/welcome');
+    	return new ViewModel();
+    }
+    
+    public function apiAction()
+    {
+    	return $this->redirect()->toRoute('zf-apigility/welcome');
     }
 }
