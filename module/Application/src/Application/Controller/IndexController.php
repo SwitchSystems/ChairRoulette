@@ -7,17 +7,22 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use ZF\ContentNegotiation\ViewModel;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
+    {
+    	return new ViewModel();
+    }
+
+    public function gameAction()
     {
         return new ViewModel();
     }
 
     public function apiAction()
     {
-        return $this->redirect()->toRoute('zf-apigility/welcome');
+    	return $this->redirect()->toRoute('zf-apigility/welcome');
     }
 }
