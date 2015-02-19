@@ -26,6 +26,16 @@ return array(
         						),
         				),
         		),        		
+        		'lobby' => array(
+        				'type' => 'Zend\Mvc\Router\Http\Literal',
+        				'options' => array(
+        						'route'    => '/lobby',
+        						'defaults' => array(
+        								'controller' => 'Application\Controller\Index',
+        								'action'     => 'lobby',
+        						),
+        				),
+        		),        		
             'api' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
