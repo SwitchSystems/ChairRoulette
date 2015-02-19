@@ -2,7 +2,7 @@
 
 $(function() {
 	
-	// common functions
+	// game functions
 	
 	
 });
