@@ -1,0 +1,46 @@
+{ 
+   "roundNumber" : 1,
+   "delay": 7000,
+   "startTime": 1424384233,
+   "status" : "play" 
+   /* 
+   	status starts with 'play' , and is set to 'finished' after a timeout period.
+   	
+   	After you have clicked on a chair, you must then poll the API and you'll receive
+   	this json file back. When the status changes to 'finished', show the chairs and the winning players.
+   */ 
+   
+   "activePlayers": [
+    "playerHash1","playerHash2","playerHash3"
+   ],
+   /* 
+   your hash must exist in this array for you to be able to play - so if you were
+   out on a previous round, your hash would not be here!
+   */ 
+   
+   "chairs" : [
+   	   { 
+   	     "id" : "sadfacsdofsnauodrfnyasoern",
+   	     "x": 200,
+   	     "y": 100,
+   	     "players": [
+   	        { 
+   	           "id": "playerHash", "name":"john", "time": 153, "status": "win"
+   	        },
+   	        { 
+   	           "id": "playerHash2", "name":"kris", "time": 231, "status": "lose"
+   	        }
+   	     ]
+   	   },
+   	   { 
+   	     "id" : "aw98rs9erysdfsfsfsd",
+   	     "x": 120,
+   	     "y": 63,
+   	     "players": [
+   	        { 
+   	           "id": "playerHash", "name":"jay", "time":83, "status": "win"
+   	        }
+   	     ]
+   	   }
+   ]
+}
