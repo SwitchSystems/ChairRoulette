@@ -1,0 +1,10 @@
+{ 
+   "roomName" : "roomName",
+   "canJoin" :  1,
+    
+   "players" : [
+   		{   "id": "playerHash", "name":"john" },
+   		{   "id": "playerHash2", "name":"kris" }
+   		
+   ]
+ }
