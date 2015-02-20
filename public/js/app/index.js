@@ -9,7 +9,7 @@ $(function() {
 	{
 		$('#roomsList').empty();
 		
-		var roomUrl = 'http://chairroulette.vagrant/testrooms.php';
+		var roomUrl = 'http://chairroulette.vagrant/api/game/get-rooms-list';
 		$.ajax(roomUrl,{
 			dataType: 'json',
 			error : function() {
@@ -53,5 +53,10 @@ $(function() {
 			}
 		}
 	}
-
+	
+	function createRoom()
+	{
+		
+	}
+	
 });
