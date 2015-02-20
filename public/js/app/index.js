@@ -2,6 +2,22 @@
 
 $(function() {
 	
+	if (createRoomName != null)
+	{
+		var createUrl = '/api/game/create-room';
+		$.ajax(createUrl,{
+			dataType: 'json',
+			data: {'roomName' : createRoomName},
+			type: "POST",
+			error : function() {
+				$('#roomsList').append('<div class="alert alert-warning">Oh Nos! Something went wrong creating your room.</div>');
+			},
+			success: function(data) {
+				window.location = '/game/' + data.result.roomHash;
+			},
+		});
+	}
+	
 	fetchRoomsDetails();
 	
 	// index functions
@@ -9,7 +25,7 @@ $(function() {
 	{
 		$('#roomsList').empty();
 		
-		var roomUrl = 'http://chairroulette.vagrant/api/game/get-rooms-list';
+		var roomUrl = '/api/game/get-rooms-list';
 		$.ajax(roomUrl,{
 			dataType: 'json',
 			error : function() {
@@ -52,11 +68,6 @@ $(function() {
 				$('#roomsList').append(roomStr);
 			}
 		}
-	}
-	
-	function createRoom()
-	{
-		
 	}
 	
 });

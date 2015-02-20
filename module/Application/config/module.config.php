@@ -19,20 +19,10 @@ return array(
         		'game' => array(
         				'type' => 'Zend\Mvc\Router\Http\Literal',
         				'options' => array(
-        						'route'    => '/game',
+        						'route'    => '/game/:roomhash',
         						'defaults' => array(
         								'controller' => 'Application\Controller\Index',
         								'action'     => 'game',
-        						),
-        				),
-        		),        		
-        		'lobby' => array(
-        				'type' => 'Zend\Mvc\Router\Http\Literal',
-        				'options' => array(
-        						'route'    => '/lobby',
-        						'defaults' => array(
-        								'controller' => 'Application\Controller\Index',
-        								'action'     => 'lobby',
         						),
         				),
         		),        		

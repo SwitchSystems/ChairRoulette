@@ -10,7 +10,7 @@
 			your friends. <em>You need to find at least 3 friends, so go ask people!</em> 
 
 			<div class="well">
-			<form id="newGame">
+			<form id="newGame" method="post">
 				<div class="form-group">
 					<label for="name">Your Name</label> 
 					<input id="name" type="text" name="name" placeholder="Your name" required="required">
@@ -18,7 +18,6 @@
 				<button type="submit" class="btn btn-primary">Start a New Game</button>
 			</form>
 			</div>
-			
 		</div>
 		<div class="col-sm-6">
 			<div id="roomsList"></div>
@@ -26,3 +25,11 @@
 	</div>
 	
 </div>
+
+<script type="text/javascript">
+<?php if (isset($this->roomName)) : ?>
+	var createRoomName = "<?php echo $this->roomName;?>";
+<?php else : ?>
+	var createRoomName;
+<?php endif;?>
+</script>
