@@ -136,7 +136,7 @@ class GameController extends AbstractActionController
     {
     	$roomHash = $this->params()->fromPost('roomHash');
     	$room = $this->memcached->get($roomHash);
-    	
+    	exit(var_dump($room));
     	//increment round
     	$room->currentRound++;
 
