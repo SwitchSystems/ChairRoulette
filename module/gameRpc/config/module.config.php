@@ -71,6 +71,15 @@ return array(
                             ),
                         ),
                     ),
+                    'atPlayerToRoom' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/add-player-to-room',
+                            'defaults' => array(
+                                'action'     => 'addPlayerToRoom',
+                            ),
+                        ),
+                    ),
                 ]
             ),
         ),
