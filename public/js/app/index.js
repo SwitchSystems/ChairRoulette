@@ -32,7 +32,7 @@ $(function() {
 				$('#roomsList').append('<div class="alert alert-warning">Oh Nos! Something went wrong finding rooms.</div>');
 			},
 			success: function(data) {
-				renderRooms(data);
+				renderRooms(data.result);
 			},
 		});
 	}
@@ -40,17 +40,19 @@ $(function() {
 	
 	function renderRooms(rooms)
 	{
-		if (rooms.length == 0)
+		if (rooms.rooms == undefined || rooms.length == 0)
 		{
 			$('#roomsList').append('<div class="alert alert-info">No rooms found</div>');
 		} else {
 			
-			for(var i = 0; i < rooms.length; i++)
+			var roomsList = rooms.rooms; 
+			
+			for(var i = 0; i < roomsList.length; i++)
 			{
 				var roomStr = '';
-				roomStr += '<div class="room"><form method="get" action="/room/' + rooms[i].roomKey + '/">';
+				roomStr += '<div class="room"><form method="get" action="/room/' + roomsList[i].roomKey + '/">';
 				
-				if (rooms[i].canJoin == 1)
+				if (roomsList[i].canJoin == 1)
 				{
 					roomStr += '<input type="submit" class="btn btn-primary btn-mini" value="Join Game" />';
 				} else {
@@ -58,10 +60,10 @@ $(function() {
 				}
 				
 				var players = 0;
-				if (rooms[i].players !== undefined)
-					players = rooms[i].players.length;
+				if (roomsList[i].players !== undefined)
+					players = roomsList[i].players.length;
 				
-				roomStr += ' &nbsp; ' + rooms[i].roomName + ' (' + players + ' Players)';
+				roomStr += ' &nbsp; ' + roomsList[i].roomName + ' (' + players + ' Players)';
 				
 				roomStr += '</form><div class="clear"></div></div>';
 				
