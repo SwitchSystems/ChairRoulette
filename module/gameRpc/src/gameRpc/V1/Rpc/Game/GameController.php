@@ -79,15 +79,6 @@ class GameController extends AbstractActionController
     	
         return ['result' => $round];
     }
-
-    public function getRoundAction()
-    {
-    	$roomHash = $this->params()->fromPost('roomHash');
-    	
-    	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
-
-        return ['result' => $round];
-    }
     
     public function sitOnChairAction()
     {

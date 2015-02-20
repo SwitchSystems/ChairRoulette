@@ -26,7 +26,6 @@ class IndexController extends AbstractActionController
     	return new ViewModel();
     }
     
-    
     public function apiAction()
     {
     	return $this->redirect()->toRoute('zf-apigility/welcome');
