@@ -152,7 +152,7 @@ class GameController extends AbstractActionController
     		$round->activePlayers[] = $player->name;
     	
     	$round->chairs = new \stdClass();
-    	for($i=0;$i<count($roundActivePlayers)-1;$i++)
+    	for($i=0;$i<count($round->activePlayers)-1;$i++)
     	{
     		$chair = new \stdClass();
     		$chair->id = uniqid(null,true);
