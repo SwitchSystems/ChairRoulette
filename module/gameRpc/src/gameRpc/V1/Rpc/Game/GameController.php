@@ -89,15 +89,15 @@ class GameController extends AbstractActionController
         ];
 
         $rooms = $this->memcached->get('rooms');
+        $room = $this->memcached->set($roomHash, $roomData);
 
         if ($rooms === null) {
             $rooms = [$room];
         } else {
-            $rooms[] = $room;
+            $rooms[$roomHash] = $room;
         }
 
         $this->memcached->set('rooms', $rooms);
-        $room = $this->memcached->set($roomHash, $roomData);
 
         return ['result' => $room];
     }
