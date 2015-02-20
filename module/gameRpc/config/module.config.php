@@ -26,6 +26,15 @@ return array(
                             ),
                         ),
                     ),
+                    'getRoomsList' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/get-rooms-list',
+                            'defaults' => array(
+                                'action'     => 'getRoomsList',
+                            ),
+                        ),
+                    ),
                     'createRoom' => array(
                         'type' => 'Zend\Mvc\Router\Http\Segment',
                         'options' => array(

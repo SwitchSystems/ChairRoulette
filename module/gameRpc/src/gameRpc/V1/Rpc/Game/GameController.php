@@ -21,7 +21,7 @@ class GameController extends AbstractActionController
         return ['result' => $room];
     }
 
-    public function getRoomAction()
+    public function getRoomsListAction()
     {
         $roomHash = $this->params()->fromPost('roomHash');
         $room = $this->memcached->get($roomHash);
