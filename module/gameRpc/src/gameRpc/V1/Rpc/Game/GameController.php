@@ -106,7 +106,7 @@ class GameController extends AbstractActionController
     	$room = $this->memcached->get($roomHash);
     	
     	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
-    	
+
         return ['result' => $round];
     }
     
@@ -138,12 +138,12 @@ class GameController extends AbstractActionController
     	
     	//increment round
     	$room->currentRound++;
-    	
-    	//create new round object
+
+        //create new round object
     	$round = new \stdClass();
     	$round->roundNumber = $room->currentRound;
     	$round->delay = mt_rand(5,15);
-    	$round->startTime = time();
+        $round->startTime = time();
     	$round->status = 'play';
     	$round->activePlayers = [];
     	
