@@ -7,14 +7,14 @@ $(function() {
 	// index functions
 	function fetchRoomsDetails()
 	{
-		$('#roomslist').empty();
+		$('#roomsList').empty();
 		
 		var roomUrl = 'http://chairroulette.vagrant/testrooms.php';
 		$.ajax(roomUrl,{
 			dataType: 'json',
 			error : function() {
 				// @TODO: oh nos!
-				$('#roomslist').append('<div class="alert alert-warning">Oh Nos! Something went wrong finding rooms.</div>');
+				$('#roomsList').append('<div class="alert alert-warning">Oh Nos! Something went wrong finding rooms.</div>');
 			},
 			success: function(data) {
 				renderRooms(data);
@@ -27,7 +27,7 @@ $(function() {
 	{
 		if (rooms.length == 0)
 		{
-			$('#roomslist').append('<div class="alert alert-info">No rooms found</div>');
+			$('#roomsList').append('<div class="alert alert-info">No rooms found</div>');
 		} else {
 			
 			for(var i = 0; i < rooms.length; i++)
@@ -45,7 +45,7 @@ $(function() {
 				roomStr += ' &nbsp; ' + rooms[i].roomName;
 				roomStr += '</form><div class="clear"></div></div>';
 				
-				$('#roomslist').append(roomStr);
+				$('#roomsList').append(roomStr);
 			}
 		}
 	}

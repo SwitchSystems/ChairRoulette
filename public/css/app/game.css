@@ -3,3 +3,11 @@
 .clear { clear:both; }
 
 #game-area { width: 600px; height:600px; border:1px solid #999; }
+
+div#roomsList div.room {
+	margin-bottom: 10px;
+}
+div#roomsList span.roomclosed {
+	font-size: 1.2em;
+	margin: 3px;
+}
