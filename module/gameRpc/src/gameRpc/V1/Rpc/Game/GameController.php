@@ -89,15 +89,15 @@ class GameController extends AbstractActionController
         ];
 
         $rooms = $this->memcached->get('rooms');
+        $room = $this->memcached->set($roomHash, $roomData);
 
         if ($rooms === null) {
             $rooms = [$room];
         } else {
-            $rooms[] = $room;
+            $rooms[$roomHash] = $room;
         }
 
         $this->memcached->set('rooms', $rooms);
-        $room = $this->memcached->set($roomHash, $roomData);
 
         return ['result' => $room];
     }
@@ -108,7 +108,7 @@ class GameController extends AbstractActionController
     	$room = $this->memcached->get($roomHash);
     	
     	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
-    	
+
         return ['result' => $round];
     }
     
@@ -137,15 +137,15 @@ class GameController extends AbstractActionController
     {
     	$roomHash = $this->params()->fromPost('roomHash');
     	$room = $this->memcached->get($roomHash);
-    	
+    	exit(var_dump($room));
     	//increment round
     	$room->currentRound++;
-    	
-    	//create new round object
+
+        //create new round object
     	$round = new \stdClass();
     	$round->roundNumber = $room->currentRound;
     	$round->delay = mt_rand(5,15);
-    	$round->startTime = time();
+        $round->startTime = time();
     	$round->status = 'play';
     	$round->activePlayers = [];
     	
