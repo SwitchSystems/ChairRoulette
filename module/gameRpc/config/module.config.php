@@ -53,6 +53,15 @@ return array(
                             ),
                         ),
                     ),
+                    'sitOnChair' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/sit-on-chair',
+                            'defaults' => array(
+                                'action'     => 'sitOnChair',
+                            ),
+                        ),
+                    ),
                 ]
             ),
         ),
