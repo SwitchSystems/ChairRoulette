@@ -31,6 +31,9 @@ $(function() {
 			chairElement.style.position = "absolute";
 			chairElement.style.left = chair['x'];
 			chairElement.style.top = chair['y'];
+			chairElement.click(function() {
+				'send api request to sit with chair[id] and difference between now and time music stopped';
+			});
 			chairElement.hide();
 		}
 		
@@ -40,14 +43,18 @@ $(function() {
 		$('div.chair').show();
 		$('audio').stop();
 		
+		var now = Date.now();
+		
+		$('div.chair').click(function(event) {
+			'send api request to sit with chair[id] and difference between event.timestamp and now variable';
+		});
+		
 		counter = setTimeout(endRound, 5000);
 	}
 	
 	function endRound() {
 		$('h1.round').remove();
 		$('div.chair').remove();
-		
-		startRound();
 	}
 	
 	function displayPlayers() {
