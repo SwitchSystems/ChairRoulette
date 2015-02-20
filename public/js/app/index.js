@@ -13,7 +13,6 @@ $(function() {
 		$.ajax(roomUrl,{
 			dataType: 'json',
 			error : function() {
-				// @TODO: oh nos!
 				$('#roomsList').append('<div class="alert alert-warning">Oh Nos! Something went wrong finding rooms.</div>');
 			},
 			success: function(data) {
@@ -42,7 +41,12 @@ $(function() {
 					roomStr += '<span class="label label-warning roomclosed">Closed</span>';
 				}
 				
-				roomStr += ' &nbsp; ' + rooms[i].roomName;
+				var players = 0;
+				if (rooms[i].players !== undefined)
+					players = rooms[i].players.length;
+				
+				roomStr += ' &nbsp; ' + rooms[i].roomName + ' (' + players + ' Players)';
+				
 				roomStr += '</form><div class="clear"></div></div>';
 				
 				$('#roomsList').append(roomStr);
