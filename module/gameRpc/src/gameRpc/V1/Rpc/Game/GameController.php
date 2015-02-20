@@ -24,9 +24,9 @@ class GameController extends AbstractActionController
     public function getRoomsListAction()
     {
         $roomHash = $this->params()->fromPost('roomHash');
-        $room = $this->memcached->get($roomHash);
+        $rooms = $this->memcached->get('rooms');
 
-        return ['result' => $room];
+        return ['result' => $rooms];
     }
 
     public function addPlayerToRoom()
@@ -41,7 +41,7 @@ class GameController extends AbstractActionController
     {
         $roomHash = $this->params()->fromPost('roomHash');
         $roomName = $this->params()->fromPost('roomName');
-        $id = $this->params()->fromPost('id');
+        $playerId = $this->params()->fromPost('playerId');
         $playerName = $this->params()->fromPost('playerName');
 
         $roomData = [
@@ -50,12 +50,21 @@ class GameController extends AbstractActionController
             'currentRound' => 0,
             'players' => [
                 [
-                    'id' => $id,
+                    'id' => $playerId,
                     'name' => $playerName
                 ]
             ]
         ];
 
+        $rooms = $this->memcached->get('rooms');
+
+        if ($rooms === null) {
+            $rooms = [$roomHash];
+        } else {
+            $rooms[] = $roomHash;
+        }
+
+        $this->memcached->set('rooms', $rooms);
         $room = $this->memcached->set($roomHash, $roomData);
 
         return ['result' => $room];
