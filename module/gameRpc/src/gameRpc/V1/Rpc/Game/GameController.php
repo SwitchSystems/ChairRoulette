@@ -21,6 +21,26 @@ class GameController extends AbstractActionController
         return ['result' => $room];
     }
 
+    public function unJoinRoomAction()
+    {
+        $roomHash = $this->params()->fromPost('roomHash');
+        $room = $this->memcached->get($roomHash);
+        $playerId = $this->params()->fromPost('playerId');
+
+        unset($room['players'][$playerId]);
+
+        return ['result' => $room];
+    }
+
+    public function deactivateRoomAction()
+    {
+        $roomHash = $this->params()->fromPost('roomHash');
+        $room = $this->memcached->get($roomHash);
+        $room['isActive'] = false;
+
+        return ['result' => $room];
+    }
+
     public function getRoomsListAction()
     {
         $roomHash = $this->params()->fromPost('roomHash');
@@ -36,6 +56,11 @@ class GameController extends AbstractActionController
         $playerName = $this->params()->fromPost('name');
         $room = $this->memcached->get($roomHash);
 
+        if ($room['playerCount'] == 4) {
+            return ['result' => 'Sorry the room is full'];
+        }
+
+        $room['playerCount'] = $room['playerCount'] + 1;
         $room['players'][] = ['id' => $playerId, 'name' => $playerName];
 
         return ['result' => $room];
@@ -51,7 +76,9 @@ class GameController extends AbstractActionController
         $roomData = [
             'roomName' => $roomName,
             'canJoin' => true,
+            'isActive' => true,
             'currentRound' => 0,
+            'playerCount' => 1,
             'players' => [
                 [
                     'id' => $playerId,
