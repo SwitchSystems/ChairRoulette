@@ -9,7 +9,7 @@ $(function() {
 	startRound();
 	
 	function startRound() {
-		$('div#gameinto').hide();
+		$('div#gameintro').hide();
 		
 		var timeout = 10;
 		var delay = roundData['delay'];
@@ -19,7 +19,7 @@ $(function() {
 		createChairs();
 		displayPlayers();
 		
-		var counter = setInterval(musicPlay, 1);
+		var counter = setTimeout(musicStop, delay);
 	}
 	
 	function createChairs() {
@@ -37,31 +37,11 @@ $(function() {
 		
 	}
 	
-	function musicPlay() {
-		delay = delay - 1;
-		if (delay <= 0)
-	    {
-	       clearInterval(counter);
-	       musicStop();
-	       return;
-	    }
-	}
-	
 	function musicStop() {
 		$('div.chair').show();
 		$('audio').stop();
 		
-		counter = setInterval(timeoutRound, 1000);
-	}
-	
-	function timeoutRound() {
-		timeout = timeout - 1;
-		if (timeout <= 0)
-	    {
-	       clearInterval(counter);
-	       endRound();
-	       return;
-	    }
+		counter = setTimeout(endRound, 5000);
 	}
 	
 	function endRound() {
