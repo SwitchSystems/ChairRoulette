@@ -2,6 +2,8 @@
 $(function() {
 	
 	var board = $('div#game-area');
+	board.style.width = '550px';
+	board.style.height = '550px';
 	var round = '<h1 class="round">Round: ';
 	
 	startRound();
