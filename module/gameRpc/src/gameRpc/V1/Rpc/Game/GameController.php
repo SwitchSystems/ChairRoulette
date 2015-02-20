@@ -53,7 +53,7 @@ class GameController extends AbstractActionController
                     'id' => $playerId,
                     'name' => $playerName
                 ]
-            ]
+            ],
         ];
 
         $rooms = $this->memcached->get('rooms');
