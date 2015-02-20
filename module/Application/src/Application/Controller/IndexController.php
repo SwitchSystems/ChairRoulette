@@ -13,9 +13,22 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	return new ViewModel();
+    	$viewParams = [];
+    	
+    	if ($this->getRequest()->isPost())
+    	{
+    		$post = $this->getRequest()->getPost();
+    		if (!isset($post->name)) {
+    			$this->flashMessenger()->addErrorMessage($this->translate('Unable to create room'));
+    		} else {
+    			$viewParams['roomName'] = $post->name;
+    		}
+    	}
+    	
+    	return new ViewModel($viewParams);
     }
-
+	
+    
     public function gameAction()
     {
         return new ViewModel();
