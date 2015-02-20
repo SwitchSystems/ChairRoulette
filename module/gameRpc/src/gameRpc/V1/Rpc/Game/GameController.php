@@ -24,9 +24,9 @@ class GameController extends AbstractActionController
     public function getRoomsListAction()
     {
         $roomHash = $this->params()->fromPost('roomHash');
-        $room = $this->memcached->get($roomHash);
+        $rooms = $this->memcached->get('rooms');
 
-        return ['result' => $room];
+        return ['result' => $rooms];
     }
 
     public function addPlayerToRoom()
@@ -41,7 +41,7 @@ class GameController extends AbstractActionController
     {
         $roomHash = $this->params()->fromPost('roomHash');
         $roomName = $this->params()->fromPost('roomName');
-        $id = $this->params()->fromPost('id');
+        $playerId = $this->params()->fromPost('playerId');
         $playerName = $this->params()->fromPost('playerName');
 
         $roomData = [
@@ -50,12 +50,21 @@ class GameController extends AbstractActionController
             'currentRound' => 0,
             'players' => [
                 [
-                    'id' => $id,
+                    'id' => $playerId,
                     'name' => $playerName
                 ]
             ]
         ];
 
+        $rooms = $this->memcached->get('rooms');
+
+        if ($rooms === null) {
+            $rooms = [$roomHash];
+        } else {
+            $rooms[] = $roomHash;
+        }
+
+        $this->memcached->set('rooms', $rooms);
         $room = $this->memcached->set($roomHash, $roomData);
 
         return ['result' => $room];
@@ -63,12 +72,79 @@ class GameController extends AbstractActionController
 
     public function getRoundAction()
     {
-        return ['result' => null];
+    	$roomHash = $this->params()->fromPost('roomHash');
+    	$room = $this->memcached->get($roomHash);
+    	
+    	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
+    	
+        return ['result' => $round];
     }
 
-    public function setRoundAction()
+    public function getRoundAction()
     {
+    	$roomHash = $this->params()->fromPost('roomHash');
+    	
+    	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
 
-        return ['result' => null];
+        return ['result' => $round];
     }
+    
+    public function sitOnChairAction()
+    {
+    	$roomHash = $this->params()->fromPost('roomHash');
+    	$chairHash = $this->params()->fromPost('chairHash');
+    	$reactionTime = $this->params()->fromPost('reaction');
+    	$userHash = $this->params()->fromPost('userHash');
+    	
+    	$round = $this->memcached->get($roomHash.'_'.$room->roundNumber);
+    	
+    	$player = new \stdClass();
+    	$player->id = $userHash;
+    	$player->time = $reactionTime;
+    	
+    	$round->chairs->{$chairHash}->players[] = $player;
+    	
+    	$this->memcached->set($roomHash.'_'.$room->roundNumber,$round);
+    	
+    	return ['result' => $round];
+    }
+    
+    public function createRoundAction()
+    {
+    	$roomHash = $this->params()->fromPost('roomHash');
+    	$room = $this->memcached->get($roomHash);
+    	
+    	//increment round
+    	$room->currentRound++;
+    	
+    	//create new round object
+    	$round = new \stdClass();
+    	$round->roundNumber = $room->currentRound;
+    	$round->delay = mt_rand(5,15);
+    	$round->startTime = time();
+    	$round->status = 'play';
+    	$round->activePlayers = [];
+    	
+    	foreach($room->players as $player)
+    		$round->activePlayers[] = $player->name;
+    	
+    	$round->chairs = new \stdClass();
+    	for($i=0;$i<count($roundActivePlayers)-1;$i++)
+    	{
+    		$chair = new \stdClass();
+    		$chair->id = uniqid(null,true);
+    		$chair->x = mt_rand(0,500);
+    		$chair->y = mt_rand(0,500);
+    		$chair->players = [];
+    		
+    		$round->chairs->{uniqid(null,true)} = $chair;
+    	}
+    	
+    	
+    	$this->memcached->set($roomHash,$room);
+    	$this->memcached->set($roomHash.'_'.$room->currentRound);
+    	
+    	return ['result' => $round];
+    }
+    
 }
