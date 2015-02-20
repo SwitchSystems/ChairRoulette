@@ -1,12 +1,14 @@
     "use strict";
 $(function() {
 	
-	var board = $('div.game-board');
+	var board = $('div#game-area');
 	var round = '<h1 class="round">Round: ';
 	
 	startRound();
 	
 	function startRound() {
+		$('div#gameinto').hide();
+		
 		var timeout = 10;
 		var delay = roundData['delay'];
 		
@@ -71,13 +73,13 @@ $(function() {
 		var playerData = roundData['activePlayers'];
 		var player;
 		
-		$('div.side-view p').each(function() {
+		$('div.players p').each(function() {
 			this.style.color = 'red';
 		});
 		
 		for(player in playerData) {
 			if(! $('p#'+player).length >= 0) {
-				$('div.side-view').append('<p id="'+player'">'+players['name']+'</p>');
+				$('div.players').append('<p id="'+player'">'+players['name']+'</p>');
 			}
 			$('p#'+player).style.color = 'green';
 		}
