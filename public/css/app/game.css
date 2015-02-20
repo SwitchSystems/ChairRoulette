@@ -6,3 +6,10 @@
 .gameintro { padding:1em;}
 .players {float:left; }  
 
+div#roomsList div.room {
+	margin-bottom: 10px;
+}
+div#roomsList span.roomclosed {
+	font-size: 1.2em;
+	margin: 3px;
+}
