@@ -26,12 +26,30 @@ return array(
                             ),
                         ),
                     ),
-                    'setRoom' => array(
+                    'createRoom' => array(
                         'type' => 'Zend\Mvc\Router\Http\Segment',
                         'options' => array(
-                            'route'    => '/set-room',
+                            'route'    => '/create-room',
                             'defaults' => array(
-                                'action'     => 'setRoom',
+                                'action'     => 'createRoom',
+                            ),
+                        ),
+                    ),
+                    'getRound' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/get-round',
+                            'defaults' => array(
+                                'action'     => 'getRound',
+                            ),
+                        ),
+                    ),
+                    'createRound' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/create-round',
+                            'defaults' => array(
+                                'action'     => 'createRound',
                             ),
                         ),
                     ),
