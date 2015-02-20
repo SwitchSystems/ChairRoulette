@@ -5,6 +5,6 @@ class GameControllerFactory
 {
     public function __invoke($controllers)
     {
-        return new GameController();
+        return new GameController($controllers->getServiceLocator()->get('MemcacheService'));
     }
 }

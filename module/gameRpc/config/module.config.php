@@ -16,6 +16,26 @@ return array(
                         'action' => 'game',
                     ),
                 ),
+                'child_routes' => [
+                    'getRoom' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/get-room',
+                            'defaults' => array(
+                                'action'     => 'getRoom',
+                            ),
+                        ),
+                    ),
+                    'setRoom' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/set-room',
+                            'defaults' => array(
+                                'action'     => 'setRoom',
+                            ),
+                        ),
+                    ),
+                ]
             ),
         ),
     ),
@@ -29,6 +49,7 @@ return array(
             'service_name' => 'game',
             'http_methods' => array(
                 0 => 'GET',
+                1 => 'POST',
             ),
             'route_name' => 'game-rpc.rpc.game',
         ),
@@ -42,12 +63,15 @@ return array(
                 0 => 'application/vnd.game-rpc.v1+json',
                 1 => 'application/json',
                 2 => 'application/*+json',
+                3 => 'application/x-www-form-urlencoded'
             ),
         ),
         'content_type_whitelist' => array(
             'gameRpc\\V1\\Rpc\\Game\\Controller' => array(
                 0 => 'application/vnd.game-rpc.v1+json',
                 1 => 'application/json',
+                2 => 'application/x-www-form-urlencoded'
+
             ),
         ),
     ),
