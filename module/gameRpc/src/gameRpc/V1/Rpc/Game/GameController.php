@@ -31,6 +31,7 @@ class GameController extends AbstractActionController
         $roomData = [
             'roomName' => $roomName,
             'canJoin' => true,
+            'currentRound' => 0,
             'players' => [
                 [
                     'id' => $id,
