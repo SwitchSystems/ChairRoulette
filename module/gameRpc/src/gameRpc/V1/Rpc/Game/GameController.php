@@ -68,8 +68,8 @@ class GameController extends AbstractActionController
 
     public function createRoomAction()
     {
-        $roomHash = $this->params()->fromPost('roomHash');
         $roomName = $this->params()->fromPost('roomName');
+        $roomHash = md5($roomName);
         $playerId = $this->params()->fromPost('playerId');
         $playerName = $this->params()->fromPost('playerName');
 
