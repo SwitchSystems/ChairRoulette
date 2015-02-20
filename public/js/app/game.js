@@ -68,16 +68,16 @@ $(function() {
 	}
 	
 	function displayPlayers() {
-		var players = roundData['activePlayers'];
+		var playerData = roundData['activePlayers'];
 		var player;
 		
 		$('div.side-view p').each(function() {
 			this.style.color = 'red';
 		});
 		
-		for(player in players) {
+		for(player in playerData) {
 			if(! $('p#'+player).length >= 0) {
-				$('div.side-view').append('<p id="'+player'">NEEDNAME</p>');
+				$('div.side-view').append('<p id="'+player'">'+players['name']+'</p>');
 			}
 			$('p#'+player).style.color = 'green';
 		}
