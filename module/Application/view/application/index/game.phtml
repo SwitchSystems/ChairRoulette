@@ -2,6 +2,29 @@
 <div class="container">
 	<a href="/index.php" class="btn pull-right btn-danger">Exit to start page</a>
 	<h1>{name}'s game</h1>
-	<div id="game-area">
-	</div>
+	
+		<div id="game-area">
+		
+		  <!-- hide this when game starts -->
+			<div class="gameintro">
+				<div class="well">
+					<p>Whilst we wait for a few more people to join... (4 minimum)</p>
+					<h2>How to play</h2>
+					<p>When the game starts, the music will play <span class="glyphicon glyphicon-music"></span>. When the music stops, 
+					chairs will appear and the first person to click on a chair will go onto the next round.<p>
+					<p><em>However...</em></p>
+					<p>If you choose the same chair as someone else, and you're slower than them, you are out!</p>
+				</div>
+				<!--  if over 4 players, set button to NOT disabled and on click redirect to game page-->
+				<div id="startGame">
+					<a class="btn btn-success btn-lg" disabled="disabled" href="/game"><span class="glyphicon glyphicon-play-circle"></span> Start Game</a>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="players">
+			<h2>Players:</h2>
+		</div>
+	
 </div>

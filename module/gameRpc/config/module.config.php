@@ -26,12 +26,48 @@ return array(
                             ),
                         ),
                     ),
-                    'setRoom' => array(
+                    'getRoomsList' => array(
                         'type' => 'Zend\Mvc\Router\Http\Segment',
                         'options' => array(
-                            'route'    => '/set-room',
+                            'route'    => '/get-rooms-list',
                             'defaults' => array(
-                                'action'     => 'setRoom',
+                                'action'     => 'getRoomsList',
+                            ),
+                        ),
+                    ),
+                    'createRoom' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/create-room',
+                            'defaults' => array(
+                                'action'     => 'createRoom',
+                            ),
+                        ),
+                    ),
+                    'getRound' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/get-round',
+                            'defaults' => array(
+                                'action'     => 'getRound',
+                            ),
+                        ),
+                    ),
+                    'createRound' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/create-round',
+                            'defaults' => array(
+                                'action'     => 'createRound',
+                            ),
+                        ),
+                    ),
+                    'sitOnChair' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/sit-on-chair',
+                            'defaults' => array(
+                                'action'     => 'sitOnChair',
                             ),
                         ),
                     ),

@@ -2,8 +2,14 @@
 
 .clear { clear:both; }
 
-#game-area { width: 600px; height:600px; border:1px solid #999; }
+#game-area { width: 600px; height:600px; border:1px solid #999; float:left; }
+.gameintro { padding:1em;}
+.players {float:left; }  
 
-div#roomList div.room {
+div#roomsList div.room {
 	margin-bottom: 10px;
+}
+div#roomsList span.roomclosed {
+	font-size: 1.2em;
+	margin: 3px;
 }
