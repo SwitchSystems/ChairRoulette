@@ -71,6 +71,33 @@ return array(
                             ),
                         ),
                     ),
+                    'atPlayerToRoom' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/add-player-to-room',
+                            'defaults' => array(
+                                'action'     => 'addPlayerToRoom',
+                            ),
+                        ),
+                    ),
+                    'deactivateRoomAction' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/deactivate-room-action',
+                            'defaults' => array(
+                                'action'     => 'deactivateRoomAction',
+                            ),
+                        ),
+                    ),
+                    'unJoinRoomAction' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/unjoin-room-action',
+                            'defaults' => array(
+                                'action'     => 'unJoinRoomAction',
+                            ),
+                        ),
+                    ),
                 ]
             ),
         ),
