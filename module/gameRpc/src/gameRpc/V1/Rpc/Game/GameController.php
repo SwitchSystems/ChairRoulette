@@ -68,8 +68,8 @@ class GameController extends AbstractActionController
 
     public function createRoomAction()
     {
-        $roomHash = $this->params()->fromPost('roomHash');
         $roomName = $this->params()->fromPost('roomName');
+        $roomHash = md5($roomName);
         $playerId = $this->params()->fromPost('playerId');
         $playerName = $this->params()->fromPost('playerName');
 
@@ -152,7 +152,7 @@ class GameController extends AbstractActionController
     		$round->activePlayers[] = $player->name;
     	
     	$round->chairs = new \stdClass();
-    	for($i=0;$i<count($roundActivePlayers)-1;$i++)
+    	for($i=0;$i<count($round->activePlayers)-1;$i++)
     	{
     		$chair = new \stdClass();
     		$chair->id = uniqid(null,true);
