@@ -13,6 +13,7 @@ $(function() {
 		board.append(round+roundData['roundNumber']+'</h1>');
 		
 		createChairs();
+		displayPlayers();
 		
 		var counter = setInterval(musicPlay, 1);
 	}
@@ -64,6 +65,22 @@ $(function() {
 		$('div.chair').remove();
 		
 		startRound();
+	}
+	
+	function displayPlayers() {
+		var players = roundData['activePlayers'];
+		var player;
+		
+		$('div.side-view p').each(function() {
+			this.style.color = 'red';
+		});
+		
+		for(player in players) {			
+			if(! $('p#'+player).length >= 0) {
+				$('div.side-view').append('<p id="'+player'">NEEDNAME</p>');
+			}
+			$('p#'+player).style.color = 'green';
+		}
 	}
 	
 });
