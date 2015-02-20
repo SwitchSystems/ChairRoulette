@@ -75,7 +75,7 @@ $(function() {
 			this.style.color = 'red';
 		});
 		
-		for(player in players) {			
+		for(player in players) {
 			if(! $('p#'+player).length >= 0) {
 				$('div.side-view').append('<p id="'+player'">NEEDNAME</p>');
 			}

@@ -16,6 +16,26 @@ return array(
                     ),
                 ),
             ),
+        		'game' => array(
+        				'type' => 'Zend\Mvc\Router\Http\Literal',
+        				'options' => array(
+        						'route'    => '/game',
+        						'defaults' => array(
+        								'controller' => 'Application\Controller\Index',
+        								'action'     => 'game',
+        						),
+        				),
+        		),        		
+        		'lobby' => array(
+        				'type' => 'Zend\Mvc\Router\Http\Literal',
+        				'options' => array(
+        						'route'    => '/lobby',
+        						'defaults' => array(
+        								'controller' => 'Application\Controller\Index',
+        								'action'     => 'lobby',
+        						),
+        				),
+        		),        		
             'api' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -38,6 +58,13 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+    	'factories' => array(
+    		'MemcacheService' => function($sm){
+    			$memcacheService = new \Application\Service\MemcacheService();
+    			$memcacheService->setAdapter(new Sonata\Cache\Adapter\Cache\MemcachedCache('chair', [['host' => '127.0.0.1', 'port' => 11211, 'weight' => 1]]));
+    			return $memcacheService;
+    		}
+    	)
     ),
     'translator' => array(
         'locale' => 'en_US',

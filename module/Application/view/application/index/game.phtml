@@ -1,14 +1,7 @@
-<?php $this->HeadScript()->appendScript('$(document).ready(function() {
-        var roundData = '.$json.'
-        });', 
-    $type = 'text/javascript') ?>
-    
- <audio controls>
-  <source src="game.mp3" type="audio/mpeg">
-</audio> 
-
-<div class="game-board">
-</div>
-
-<div class="side-view">
+<script src="/js/app/game.js"></script>
+<div class="container">
+	<a href="/index.php" class="btn pull-right btn-danger">Exit to start page</a>
+	<h1>{name}'s game</h1>
+	<div id="game-area">
+	</div>
 </div>
